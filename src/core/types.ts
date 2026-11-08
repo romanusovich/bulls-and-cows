@@ -42,8 +42,11 @@ export interface GameState {
     readonly settings: GameSettings
     readonly secret: Secret
     readonly history: readonly GuessHistory[]
-    readonly startedAt: number | null // Время начала игры в миллисекундах, передается извне, чтобы не вызывать Date.now() внутри игры
+    readonly startedAt: number | null
+    readonly finishedAt: number | null
 }
+
+export type GuessRejection = 'not-playing' | 'invalid' | 'duplicate'
 
 export interface RecordEntry {
     readonly attempts: number
