@@ -1,11 +1,12 @@
-import type { BaseValue } from './types.js'
+import { MAX_LENGTH, MIN_LENGTH, type BaseValue } from './types.js'
 
-export const getAvailableLengths = (base: BaseValue): readonly number[] => {
-    throw new Error(`getAvailableLengths is not implemented (base: ${base})`)
-}
+const getMaxLength = (base: BaseValue): number => Math.min(MAX_LENGTH, base)
 
-export const reduceLength = (length: number, base: BaseValue): number => {
-    throw new Error(
-        `reduceLength is not implemented (length: ${length}, base: ${base})`
+export const getAvailableLengths = (base: BaseValue): readonly number[] =>
+    Array.from(
+        { length: getMaxLength(base) - MIN_LENGTH + 1 },
+        (_, index) => MIN_LENGTH + index
     )
-}
+
+export const reduceLength = (length: number, base: BaseValue): number =>
+    Math.min(Math.max(length, MIN_LENGTH), getMaxLength(base))
