@@ -1,25 +1,29 @@
 {
-  "name": "bulls-and-cows",
-  "version": "1.0.0",
-  "description": "Bulls and Cows — игра в угадывание секретного числа из уникальных цифр. Компьютер загадывает число заданной длины в заданной системе счисления, игрок вводит варианты, после каждой попытки получает подсказку: сколько цифр угаданы и стоят на своём месте (bulls), и сколько угаданы, но стоят не на своём месте (cows).",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/romanusovich/bulls-and-cows.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "module",
-  "bugs": {
-    "url": "https://github.com/romanusovich/bulls-and-cows/issues"
-  },
-  "homepage": "https://github.com/romanusovich/bulls-and-cows#readme",
-  "devDependencies": {
-    "typescript": "^7.0.2"
-  }
+    "name": "bulls-and-cows",
+    "version": "1.0.0",
+    "description": "Bulls and Cows — игра в угадывание секретного числа из уникальных цифр. Компьютер загадывает число заданной длины в заданной системе счисления, игрок вводит варианты, после каждой попытки получает подсказку: сколько цифр угаданы и стоят на своём месте (bulls), и сколько угаданы, но стоят не на своём месте (cows).",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "build": "tsc",
+        "format": "prettier --write .",
+        "format:check": "prettier --check ."
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/romanusovich/bulls-and-cows.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "type": "module",
+    "bugs": {
+        "url": "https://github.com/romanusovich/bulls-and-cows/issues"
+    },
+    "homepage": "https://github.com/romanusovich/bulls-and-cows#readme",
+    "devDependencies": {
+        "eslint-config-prettier": "^10.1.8",
+        "prettier": "^3.9.10",
+        "typescript": "^7.0.2"
+    }
 }
