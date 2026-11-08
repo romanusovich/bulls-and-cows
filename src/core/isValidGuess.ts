@@ -1,3 +1,4 @@
+import { createDigitValidator } from './createDigitValidator.js'
 import type { BaseValue, Guess } from './types.js'
 
 export const isValidGuess = (
@@ -5,7 +6,13 @@ export const isValidGuess = (
     length: number,
     base: BaseValue
 ): boolean => {
-    throw new Error(
-        `isValidGuess is not implemented (guess: ${guess}, length: ${length}, base: ${base})`
+    const isValidDigit = createDigitValidator(base)
+    const chars = [...guess]
+    const uniqueChars = new Set(chars.map((char) => char.toLowerCase()))
+
+    return (
+        chars.length === length &&
+        chars.every(isValidDigit) &&
+        uniqueChars.size === chars.length
     )
 }
