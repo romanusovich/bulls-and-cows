@@ -37,7 +37,7 @@ jobs:
 
       - run: |
           mkdir site
-          cp -r index.html styles.css dist site/
+          cp -r index.html style.css dist site/
 
       - uses: actions/configure-pages@v5
 
