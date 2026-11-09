@@ -1,0 +1,122 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 16px;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #eee;
+    color: #000;
+    font-family: Arial, sans-serif;
+}
+
+main {
+    width: 100%;
+    max-width: 400px;
+}
+
+h1 {
+    margin: 0 0 16px;
+    text-align: center;
+    font-size: 28px;
+}
+
+h2 {
+    margin: 0 0 12px;
+    font-size: 18px;
+}
+
+p {
+    margin: 0 0 12px;
+}
+
+section {
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background: #fff;
+}
+
+section + section {
+    margin-top: 16px;
+}
+
+label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+select,
+input {
+    height: 40px;
+    padding: 0 10px;
+    border: 1px solid #888;
+    border-radius: 6px;
+    background: #fff;
+    font-size: 16px;
+}
+
+select {
+    width: 120px;
+}
+
+button {
+    height: 40px;
+    padding: 0 18px;
+    border: 0;
+    border-radius: 6px;
+    background: green;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+section > button {
+    display: block;
+    width: 100%;
+}
+
+form {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 8px;
+    margin-bottom: 12px;
+}
+
+input {
+    flex: 1;
+    min-width: 0;
+    font-family: monospace;
+    font-size: 18px;
+}
+
+form p {
+    flex-basis: 100%;
+    margin: 0;
+    color: red;
+    font-size: 14px;
+    line-height: 2;
+}
+
+h2 + p {
+    color: green;
+    font-weight: bold;
+}
+
+ol {
+    margin: 0 0 12px;
+    padding-left: 28px;
+    font-family: monospace;
+    font-size: 16px;
+}
+
+li {
+    padding: 4px 0;
+}
