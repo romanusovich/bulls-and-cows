@@ -111,10 +111,14 @@ h2 + p {
 }
 
 ol {
-    margin: 0 0 12px;
+    margin: 0;
     padding-left: 28px;
     font-family: monospace;
     font-size: 16px;
+}
+
+ol + button {
+    margin-top: 12px;
 }
 
 li {

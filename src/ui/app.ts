@@ -12,9 +12,13 @@ import { generateSecret } from '../core/generateSecret.js'
 import { BASES, type GameSettings, type GameState } from '../core/types.js'
 import { el } from './dom.js'
 
+import { addRecord, createRecord, getTopRecords } from '../core/records.js'
+import { loadRecords, saveRecords } from './storage.js'
+
 const root = el('main')
 
 let state: GameState = createInitialState({ length: 4, base: 10 })
+let records = loadRecords()
 
 const setState = (next: GameState): void => {
     state = next
@@ -117,7 +121,15 @@ const renderGuessForm = (): HTMLElement => {
         const reason = getGuessRejection(state, input.value)
 
         if (reason === null) {
-            setState(submitGuess(state, input.value, Date.now()))
+            const next = submitGuess(state, input.value, Date.now())
+            const record = createRecord(next)
+
+            if (record !== null) {
+                records = addRecord(records, record)
+                saveRecords(records)
+            }
+
+            setState(next)
         } else {
             note.textContent =
                 reason === 'duplicate'
@@ -127,6 +139,32 @@ const renderGuessForm = (): HTMLElement => {
     })
 
     return form
+}
+
+const describeSettings = ({ length, base }: GameSettings): string => {
+    const name =
+        Object.entries(BASES).find(([, value]) => value === base)?.[0] ??
+        String(base)
+    return `${name}, ${length}`
+}
+
+const renderRecords = (): HTMLElement => {
+    const top = getTopRecords(records, state.settings)
+    const rows = top.map((entry) =>
+        el(
+            'li',
+            `${entry.attempts} поп. — ${(entry.timeMs / 1000).toFixed(1)} с`
+        )
+    )
+
+    return el(
+        'section',
+        '',
+        el('h2', `Таблица лидеров (${describeSettings(state.settings)})`),
+        top.length === 0
+            ? el('div', 'Пока нет результатов')
+            : el('ol', '', ...rows)
+    )
 }
 
 const renderGame = (): HTMLElement => {
@@ -167,7 +205,8 @@ const render = (): void => {
     root.replaceChildren(
         el('h1', 'Bulls and Cows'),
         renderSettings(),
-        ...(state.status === 'settings' ? [] : [renderGame()])
+        ...(state.status === 'settings' ? [] : [renderGame()]),
+        renderRecords()
     )
     root.querySelector('input')?.focus()
 }
