@@ -1,0 +1,49 @@
+{
+    "name": "bulls-and-cows",
+    "version": "1.0.0",
+    "description": "Bulls and Cows — игра в угадывание секретного числа из уникальных цифр. Компьютер загадывает число заданной длины в заданной системе счисления, игрок вводит варианты, после каждой попытки получает подсказку: сколько цифр угаданы и стоят на своём месте (bulls), и сколько угаданы, но стоят не на своём месте (cows).",
+    "main": "index.js",
+    "scripts": {
+        "build": "tsc",
+        "format": "prettier --write .",
+        "format:check": "prettier --check .",
+        "lint": "eslint .",
+        "lint:fix": "eslint . --fix",
+        "test": "vitest run --passWithNoTests",
+        "test:watch": "vitest",
+        "prepare": "husky"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/romanusovich/bulls-and-cows.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "type": "module",
+    "bugs": {
+        "url": "https://github.com/romanusovich/bulls-and-cows/issues"
+    },
+    "homepage": "https://github.com/romanusovich/bulls-and-cows#readme",
+    "devDependencies": {
+        "@eslint/js": "^10.0.1",
+        "eslint": "^10.14.0",
+        "eslint-config-prettier": "^10.1.8",
+        "globals": "^17.14.0",
+        "husky": "^9.1.7",
+        "lint-staged": "^17.6.0",
+        "prettier": "^3.9.10",
+        "typescript": "~6.0",
+        "typescript-eslint": "^8.72.1",
+        "vitest": "^5.1.0"
+    },
+    "lint-staged": {
+        "*.{ts,js}": [
+            "eslint --fix",
+            "prettier --write"
+        ],
+        "*.{json,md,html,css}": [
+            "prettier --write"
+        ]
+    }
+}
